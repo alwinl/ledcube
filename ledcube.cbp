@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="ledcube" />
+		<Option pch_mode="2" />
+		<Option compiler="arm-elf-gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/ledcube" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="arm-elf-gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/ledcube" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="arm-elf-gcc" />
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-DSTM32F1" />
+			<Add option="-mthumb" />
+			<Add option="-mcpu=cortex-m3" />
+			<Add option="-Wall" />
+		</Compiler>
+		<Linker>
+			<Add option="--static" />
+			<Add option="-nostartfiles" />
+			<Add option="-Tbluepill.ld" />
+			<Add option="-mthumb" />
+			<Add option="-mcpu=cortex-m3" />
+			<Add option="-Wl,-Map=ledcube.map" />
+			<Add option="-Wl,--cref" />
+			<Add option="-Wl,--gc-sections" />
+			<Add option="-Wl,--start-group -lc -lgcc -lnosys -Wl,--end-group" />
+			<Add library="opencm3_stm32f1" />
+		</Linker>
+		<Unit filename="generator.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="generator.h" />
+		<Unit filename="ledcube.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ledcube.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="stm32f1.cfg" />
+		<Unit filename="table.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="table.h" />
+		<Unit filename="tick.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tick.h" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
