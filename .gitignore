@@ -1,6 +1,8 @@
 bin/*
 obj/*
+make_frames/bin/*
+make_frames/obj/*
 *.depend
 *.map
 *.layout
-
+make_frames/frames.c
