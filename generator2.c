@@ -37,7 +37,7 @@ void display_frame( Frame* frame )
 	for( uint8_t layer = 0; layer < 4; ++layer ) {
 		for( uint8_t position = 0; position < 16; ++position ) {
 
-			uint8_t bit_idx = layer * 4 + position;
+			uint8_t bit_idx = layer * 16 + position;
 
 			if( (frame->red   >> bit_idx) & 0x01 ) turn_led_on( (RED   << 6) | ((layer & 0x03) << 4) | (position & 0x0F ) );
 			if( (frame->green >> bit_idx) & 0x01 ) turn_led_on( (GREEN << 6) | ((layer & 0x03) << 4) | (position & 0x0F ) );
