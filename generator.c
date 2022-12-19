@@ -28,17 +28,19 @@ const uint8_t BLUE = 0x02;
 
 static void rainbow()
 {
-	for( uint8_t layer0_colour = 0; layer0_colour < 3; ++layer0_colour ) {
+	for( uint8_t colour_base = 0; colour_base < 3; ++colour_base ) {
 
 		for( uint32_t start = sys_tick_get_tickcount(); sys_tick_get_tickcount() - start < 250;  ) {
 
 			for( uint8_t layer = 0; layer < 4; ++layer ) {
 				for( uint8_t position = 0; position < 16; ++position ) {
 
-					uint8_t colour = (layer0_colour + layer ) % 3;
+					uint8_t colour = (colour_base + layer ) % 3;
+					uint8_t colour_bits = 1 << colour;
 
-					uint8_t code = ((colour & 0x03) << 6) | ((layer & 0x03) << 4) | (position & 0x0F );
-					turn_led_on( code );
+					if( colour_bits & (1 << RED)  ) turn_led_on( (RED   << 6) | ((layer & 0x03) << 4) | (position & 0x0F ) );
+					if( colour_bits & (1 << GREEN)) turn_led_on( (GREEN << 6) | ((layer & 0x03) << 4) | (position & 0x0F ) );
+					if( colour_bits & (1 << BLUE) ) turn_led_on( (BLUE  << 6) | ((layer & 0x03) << 4) | (position & 0x0F ) );
 				}
 			}
 		}
@@ -47,17 +49,19 @@ static void rainbow()
 
 static void walk_right()
 {
-	for( uint8_t leftside_colour = 0; leftside_colour < 3; ++leftside_colour ) {
+	for( uint8_t colour_base = 0; colour_base < 3; ++colour_base ) {
 
 		for( uint32_t start = sys_tick_get_tickcount(); sys_tick_get_tickcount() - start < 250;  ) {
 
 			for( uint8_t layer = 0; layer < 4; ++layer ) {
 				for( uint8_t position = 0; position < 16; ++position ) {
 
-					uint8_t colour = (leftside_colour + position / 4 ) % 3;
+					uint8_t colour = (colour_base + position / 4 ) % 3;
+					uint8_t colour_bits = 1 << colour;
 
-					uint8_t code = ((colour & 0x03) << 6) | ((layer & 0x03) << 4) | (position & 0x0F );
-					turn_led_on( code );
+					if( colour_bits & (1 << RED)  ) turn_led_on( (RED   << 6) | ((layer & 0x03) << 4) | (position & 0x0F ) );
+					if( colour_bits & (1 << GREEN)) turn_led_on( (GREEN << 6) | ((layer & 0x03) << 4) | (position & 0x0F ) );
+					if( colour_bits & (1 << BLUE) ) turn_led_on( (BLUE  << 6) | ((layer & 0x03) << 4) | (position & 0x0F ) );
 				}
 			}
 		}
@@ -66,17 +70,19 @@ static void walk_right()
 
 static void walk_back()
 {
-	for( uint8_t leftside_colour = 0; leftside_colour < 3; ++leftside_colour ) {
+	for( uint8_t colour_base = 0; colour_base < 3; ++colour_base ) {
 
 		for( uint32_t start = sys_tick_get_tickcount(); sys_tick_get_tickcount() - start < 250;  ) {
 
 			for( uint8_t layer = 0; layer < 4; ++layer ) {
 				for( uint8_t position = 0; position < 16; ++position ) {
 
-					uint8_t colour = (leftside_colour + position % 4 ) % 3;
+					uint8_t colour = (colour_base + position % 4 ) % 3;
+					uint8_t colour_bits = 1 << colour;
 
-					uint8_t code = ((colour & 0x03) << 6) | ((layer & 0x03) << 4) | (position & 0x0F );
-					turn_led_on( code );
+					if( colour_bits & (1 << RED)  ) turn_led_on( (RED   << 6) | ((layer & 0x03) << 4) | (position & 0x0F ) );
+					if( colour_bits & (1 << GREEN)) turn_led_on( (GREEN << 6) | ((layer & 0x03) << 4) | (position & 0x0F ) );
+					if( colour_bits & (1 << BLUE) ) turn_led_on( (BLUE  << 6) | ((layer & 0x03) << 4) | (position & 0x0F ) );
 				}
 			}
 		}
