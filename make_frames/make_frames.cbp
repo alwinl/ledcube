@@ -52,6 +52,8 @@
 		</Compiler>
 		<Unit filename="frames.c">
 			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
 			<Option target="Debug" />
 			<Option target="Release" />
 			<Option target="TestIt" />

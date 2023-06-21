@@ -36,6 +36,8 @@ typedef struct Frame_t
 extern Frame frames[];
 
 extern unsigned int animation_start[];
+extern unsigned int animation_lengths[];
+extern unsigned int total_animations;
 
 #ifdef __cplusplus
 }

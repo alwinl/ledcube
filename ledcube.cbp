@@ -23,10 +23,13 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-DSTM32F1" />
-			<Add option="-mthumb" />
 			<Add option="-mcpu=cortex-m3" />
+			<Add option="-mthumb" />
+			<Add option="-Wnon-virtual-dtor" />
+			<Add option="-Weffc++" />
+			<Add option="-Wextra" />
 			<Add option="-Wall" />
+			<Add option="-DSTM32F1" />
 		</Compiler>
 		<Linker>
 			<Add option="--static" />
@@ -43,12 +46,13 @@
 		<Unit filename=".gitignore" />
 		<Unit filename="generator.c">
 			<Option compilerVar="CC" />
-			<Option target="Debug" />
+			<Option compile="0" />
+			<Option link="0" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="generator.h" />
 		<Unit filename="generator2.c">
 			<Option compilerVar="CC" />
-			<Option target="Release" />
 		</Unit>
 		<Unit filename="ledcube.c">
 			<Option compilerVar="CC" />
@@ -59,7 +63,6 @@
 		</Unit>
 		<Unit filename="make_frames/frames.c">
 			<Option compilerVar="CC" />
-			<Option target="Release" />
 		</Unit>
 		<Unit filename="make_frames/frames.h">
 			<Option target="Release" />
