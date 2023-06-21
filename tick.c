@@ -21,7 +21,7 @@
 
 #include <libopencm3/cm3/systick.h>
 
-static volatile uint32_t tickcount = 0;
+static volatile uint64_t tickcount = 0;
 
 void sys_tick_setup(void)
 {
@@ -45,9 +45,9 @@ uint32_t sys_tick_get_tickcount()
 
 void sys_tick_delay( uint32_t time_in_ms )
 {
-    uint32_t start = tickcount;
+    uint64_t end = tickcount + time_in_ms;
 
-    while( (sys_tick_get_tickcount() - start) < time_in_ms )
+    while( tickcount < end )
         ;
 }
 
