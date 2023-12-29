@@ -143,7 +143,7 @@ void turn_led_on( uint8_t code )
  * We want to be able to blank the cube, specifically when we load new
  * data.
  */
-void blank_cube()
+void blank_cube( void )
 {
     gpio_clear( serial_out_pin.port, serial_out_pin.pin );
 

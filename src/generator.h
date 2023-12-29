@@ -19,19 +19,17 @@
  *
  */
 
-#ifndef TICK_H
-#define TICK_H
+#ifndef GENERATOR_H
+#define GENERATOR_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void sys_tick_setup();
-uint32_t sys_tick_get_tickcount();
-void sys_tick_delay( uint32_t time_in_ms );
+void run_cube( void );
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // TICK_H
+#endif // GENERATOR_H

@@ -19,17 +19,38 @@
  *
  */
 
-#ifndef GENERATOR_H
-#define GENERATOR_H
+#include <libopencm3/cm3/systick.h>
+#include <libopencm3/cm3/nvic.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include "tick.h"
 
-void run_cube();
+static volatile uint64_t tickcount = 0;
 
-#ifdef __cplusplus
+void sys_tick_setup(void)
+{
+#define tick_frequency (1000)		/* 1ms period equals 1 kHz */
+#define AHB_frequency (72000000)	/* system running at 72 Mhz */
+
+	systick_set_frequency( tick_frequency, AHB_frequency );
+	systick_counter_enable();
+	systick_interrupt_enable();
 }
-#endif
 
-#endif // GENERATOR_H
+void sys_tick_handler( void )
+{
+    ++tickcount;
+}
+
+uint32_t sys_tick_get_tickcount()
+{
+    return tickcount;
+}
+
+void sys_tick_delay( uint32_t time_in_ms )
+{
+    uint64_t end = tickcount + time_in_ms;
+
+    while( tickcount < end )
+        ;
+}
+

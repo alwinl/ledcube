@@ -38,7 +38,8 @@ ledcube_pins_t ledcube_pins =
 static void clock_setup( void )
 {
 	/* Use a High Speed External 8Mhz crystal and run at 72Mhz */
-	rcc_clock_setup_pll( &rcc_hse_configs[RCC_CLOCK_HSE8_72MHZ] );
+	//rcc_clock_setup_pll( &rcc_hse_configs[RCC_CLOCK_HSE8_72MHZ] );
+	rcc_clock_setup_in_hse_8mhz_out_72mhz();
 
 	rcc_periph_clock_enable( RCC_AFIO );	/* Enable AFIO clock. */
 	rcc_periph_clock_enable( RCC_GPIOB );	/* Enable GPIOB clock. */

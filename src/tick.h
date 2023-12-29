@@ -19,36 +19,19 @@
  *
  */
 
-#ifndef LEDCUBE_H
-#define LEDCUBE_H
-
-#include <stdint.h>
+#ifndef TICK_H
+#define TICK_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-typedef struct
-{
-	uint32_t port;
-	uint16_t pin;
-} pin_t;
-
-typedef struct
-{
-	pin_t reset;
-	pin_t shift_clock;
-	pin_t store_clock;
-	pin_t serial_out;
-} ledcube_pins_t;
-
-void ledcube_init( ledcube_pins_t * pins );
-void turn_led_on( uint8_t code );
-
-void blank_cube();
+void sys_tick_setup( void );
+uint32_t sys_tick_get_tickcount( void );
+void sys_tick_delay( uint32_t time_in_ms );
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* LEDCUBE_H */
+#endif // TICK_H

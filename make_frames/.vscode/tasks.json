@@ -1,0 +1,19 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "build host program",
+			"type": "shell",
+			"command": "g++",
+			"args": [
+				"-o",
+				"make_frames",
+				"main.cc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}

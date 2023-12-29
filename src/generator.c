@@ -19,8 +19,9 @@
 
 #include "ledcube.h"
 #include "tick.h"
+#include "generator.h"
 
-#include "make_frames/frames.h"
+#include "frames.h"
 
 const uint8_t RED = 0x00;
 const uint8_t GREEN = 0x01;
@@ -35,7 +36,7 @@ static uint8_t get_sequence_idx( uint8_t animation_idx )
 	return sequence_idx;
 }
 
-static uint8_t get_animation_idx()
+static uint8_t get_animation_idx( void )
 {
 	static uint8_t animation_ticks = 0;
 	static uint8_t animation_idx = 0;
@@ -51,7 +52,7 @@ static uint8_t get_animation_idx()
 	return animation_idx;
 }
 
-static uint8_t get_frame_idx()
+static uint8_t get_frame_idx( void )
 {
 	static uint32_t last_tick_count = 0;
 	static uint8_t frame_idx = 0;
@@ -68,7 +69,7 @@ static uint8_t get_frame_idx()
 	return frame_idx;
 }
 
-void run_cube()
+void run_cube( void )
 {
 	Frame* frame = &frames[ get_frame_idx() ];
 
